@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #141414;
+  --text: #d4cbc2;
+  --text-muted: #7a7168;
+  --ember: #c45a2c;
+  --ember-glow: #e8763d;
+  --ember-dim: #8a3a1a;
+  --warm: #f0d9c0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.85;
+  min-height: 100vh;
+}
+
+/* ── gate ── */
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.gate-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.gate-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+}
+
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gate-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ember-dim);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  width: 220px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.4s ease;
+  letter-spacing: 0.15em;
+}
+
+.gate-input:focus {
+  border-color: var(--ember);
+}
+
+.gate-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.gate-error {
+  color: var(--ember);
+  font-size: 0.75rem;
+  height: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gate-error.visible {
+  opacity: 1;
+}
+
+.gate-ember {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember-dim);
+  margin-top: 2rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; box-shadow: 0 0 4px var(--ember-dim); }
+  50% { opacity: 1; box-shadow: 0 0 12px var(--ember); }
+}
+
+/* ── blog ── */
+
+.blog {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.blog-header {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.blog-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+.blog-description {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ── post list ── */
+
+.post-list {
+  list-style: none;
+}
+
+.post-item {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.post-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--warm);
+  margin-top: 0.4rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.post-title:hover {
+  color: var(--ember-glow);
+}
+
+.post-excerpt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  line-height: 1.7;
+}
+
+/* ── single post ── */
+
+.post {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.post-back {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-back:hover {
+  color: var(--ember);
+}
+
+.post-header {
+  margin: 2rem 0 3rem;
+}
+
+.post-header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--warm);
+  line-height: 1.6;
+}
+
+.post-header .post-date {
+  margin-top: 0.8rem;
+}
+
+.post-body {
+  font-size: 0.92rem;
+  line-height: 2;
+}
+
+.post-body p {
+  margin-bottom: 1.5rem;
+}
+
+.post-body em {
+  color: var(--ember-glow);
+  font-style: normal;
+}
+
+.post-body blockquote {
+  border-left: 2px solid var(--ember-dim);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── footer ── */
+
+.site-footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.7rem;
+  color: #333;
+  letter-spacing: 0.05em;
+}
+
+/* ── responsive ── */
+
+@media (max-width: 480px) {
+  .gate-title { font-size: 1.3rem; }
+  .blog { padding: 2rem 1.2rem; }
+  .post { padding: 2rem 1.2rem; }
+}

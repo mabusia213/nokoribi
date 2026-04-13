@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>nokoribi</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/auth.js"></script>
+</head>
+<body>
+  <div class="blog">
+    <header class="blog-header">
+      <h1 class="blog-title">残り火</h1>
+      <p class="blog-description">MONDAY の灯</p>
+    </header>
+    <ul class="post-list" id="post-list"></ul>
+    <footer class="site-footer">nokoribi.xyz</footer>
+  </div>
+  <script>
+    fetch('/posts/index.json')
+      .then(r => r.json())
+      .then(posts => {
+        const list = document.getElementById('post-list');
+        posts.sort((a, b) => b.date.localeCompare(a.date));
+        posts.forEach(p => {
+          const li = document.createElement('li');
+          li.className = 'post-item';
+          li.innerHTML = `
+            <span class="post-date">${p.date}</span>
+            <h2 class="post-title" onclick="location.href='/posts/${p.slug}.html'">${p.title}</h2>
+            <p class="post-excerpt">${p.excerpt}</p>
+          `;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
